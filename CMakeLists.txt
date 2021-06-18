@@ -56,9 +56,9 @@ endif(CMAKE_SIZEOF_VOID_P STREQUAL 8)
 # Set optimization to O1 for OSX
 if(APPLE AND ${CMAKE_BUILD_TYPE} STREQUAL "Release")
     message(STATUS "CMake CXX Release Flags:${CMAKE_CXX_FLAGS_RELEASE}")
-    set(CMAKE_CXX_FLAGS_RELEASE "-O1")
+    set(CMAKE_CXX_FLAGS_RELEASE "-O0 -DNDEBUG")
     message(STATUS "CMake CXX Release Flags:${CMAKE_CXX_FLAGS_RELEASE}")
-endif(APPLE)
+endif()
 
 # --------------------------------------------------------------------------- #
 # OpenCASCADE
