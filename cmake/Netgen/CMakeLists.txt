@@ -243,6 +243,11 @@ if(WIN32)
     set_target_properties(nglib4smesh PROPERTIES COMPILE_FLAGS "-DNGLIB_EXPORTS")
 endif(WIN32)
 
+if(APPLE)
+    # work-around for bug in Xcode 11.3: https://forums.developer.apple.com/thread/121887
+    target_compile_options(nglib4smesh PUBLIC "-fno-stack-check")
+endif(APPLE)
+
 # Install
 install(FILES ${GENERAL_INCLUDES} DESTINATION "include/smesh/Netgen")
 install(FILES ${GPRIM_INCLUDES} DESTINATION "include/smesh/Netgen")

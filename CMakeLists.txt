@@ -53,11 +53,12 @@ if(CMAKE_SIZEOF_VOID_P STREQUAL 8)
     add_definitions(-D_OCC64)
 endif(CMAKE_SIZEOF_VOID_P STREQUAL 8)
 
-# Set optimization to O1 for OSX
-if(APPLE AND ${CMAKE_BUILD_TYPE} STREQUAL "Release")
-    message(STATUS "CMake CXX Release Flags:${CMAKE_CXX_FLAGS_RELEASE}")
-    set(CMAKE_CXX_FLAGS_RELEASE "-O0 -DNDEBUG")
-    message(STATUS "CMake CXX Release Flags:${CMAKE_CXX_FLAGS_RELEASE}")
+# Tryng to fix OSX crash?
+if(APPLE)
+    # message(STATUS "CMake CXX Release Flags:${CMAKE_CXX_FLAGS_RELEASE}")
+    # set(CMAKE_CXX_FLAGS_RELEASE "-O0 -DNDEBUG")
+    # message(STATUS "CMake CXX Release Flags:${CMAKE_CXX_FLAGS_RELEASE}")
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif()
 
 # --------------------------------------------------------------------------- #
