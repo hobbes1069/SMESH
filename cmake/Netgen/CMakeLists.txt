@@ -243,9 +243,13 @@ if(WIN32)
     set_target_properties(nglib4smesh PROPERTIES COMPILE_FLAGS "-DNGLIB_EXPORTS")
 endif(WIN32)
 
+# Trying to fix OSX crash?
 if(APPLE)
-    # work-around for bug in Xcode 11.3: https://forums.developer.apple.com/thread/121887
+    # https://github.com/NGSolve/netgen/blob/b51df253fd2a5ad73e77268ce2196890640e3aac/CMakeLists.txt#L484
     target_compile_options(nglib4smesh PUBLIC "-fno-stack-check")
+
+    # https://github.com/NGSolve/netgen/blob/b51df253fd2a5ad73e77268ce2196890640e3aac/CMakeLists.txt#L227
+    target_link_options(nglib4smesh PUBLIC "-undefined dynamic_lookup")
 endif(APPLE)
 
 # Install
