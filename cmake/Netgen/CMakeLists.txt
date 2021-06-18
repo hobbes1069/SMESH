@@ -249,7 +249,7 @@ if(APPLE)
     target_compile_options(nglib4smesh PUBLIC "-fno-stack-check")
 
     # https://github.com/NGSolve/netgen/blob/b51df253fd2a5ad73e77268ce2196890640e3aac/CMakeLists.txt#L227
-    target_link_options(nglib4smesh PUBLIC "LINKER:-undefined dynamic_lookup")
+    target_link_options(nglib4smesh PUBLIC "LINKER:-undefined, dynamic_lookup")
 endif(APPLE)
 
 # Install
