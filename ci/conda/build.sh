@@ -8,7 +8,7 @@ fi
 
 declare ENABLE_NETGEN=true
 if [[ ${HOST} =~ .*apple.* ]]; then
-  ENABLE_NETGEN=true  # set to false if you don't want to build and test Netgen
+  ENABLE_NETGEN=false  # set to false if you don't want to build and test Netgen
 fi
 
 cmake -G "Ninja" \
